@@ -10,5 +10,5 @@ namespace test1
 		}
 	};
 
-	StaticClassConstructor constructor(NAME, std::make_unique<Test1>);
+	StaticClassConstructor<Test1> constructor;
 }

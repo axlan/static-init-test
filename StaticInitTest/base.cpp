@@ -9,10 +9,7 @@ std::map<std::string, ConstructFunc>& get_objects()
     return construct_map;
 }
 
-void add_object(std::string name, const ConstructFunc& constructor)
-{
-    get_objects()[name] = constructor;
-}
+
 
 bool Base::make_obj(std::string type, BasePtr& ptr)
 {
@@ -25,8 +22,5 @@ bool Base::make_obj(std::string type, BasePtr& ptr)
     }
 }
 
-
-StaticClassConstructor::StaticClassConstructor(std::string name, const ConstructFunc& constructor) {
-    // Notify when the static member is created
-    add_object(name, constructor);
-}
+template<typename T>
+StaticClassConstructor<T> TemplateBase<T>::m = StaticClassConstructor<>();
